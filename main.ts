@@ -111,7 +111,9 @@ console.log('итераций:', count);
 
 
 
-// Сортировка выбором
+
+/*
+// Сортировка выбором - O(n^2)
 const arr1: number[] = [1, 3, 3, 4, 9, 1, 6, 23, 4, 45];
 let count = 0;
 
@@ -131,3 +133,51 @@ function selection(array: number[]): number[] {
     }
     return array;
 }
+    */
+
+
+
+
+
+
+// Найти все пары чисел в массиве nums, сумма которых равна target. - O(n^2)
+
+// const nums = [1, 3, 2, 8, 4, 0];
+// const target = 4;
+// const result: number[][] = [];
+
+// for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//         if (nums[i] + nums[j] === target) {
+//             result.push([nums[i], nums[j]]);
+//         }
+//     }
+// }
+
+// console.log(result);
+
+
+
+
+
+// const arr1: number[] = [0, 3, 4, 5, 6, 7, 8];
+// let target: number = 7;
+// let result: number[][] = [];
+
+// for (let i = 0; i < arr1.length; i++) {
+//     for (let j = i + 1; j < arr1.length; j++) {
+//         if (arr1[i] + arr1[j] === target) {
+//             result.push([arr1[i], arr1[j]]);
+//         }
+//     }
+// };
+// console.log(result);
+
+
+
+
+
+
+
+
+// 
