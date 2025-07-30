@@ -180,4 +180,88 @@ function selection(array: number[]): number[] {
 
 
 
-// 
+//  СОРТИРОВКА ВЫБОРОМ
+// мутируем тот же массив
+
+// const arr1: number[] = [4, 6, 3, 2, 0, 8, 9, 1, 10, 12];
+// let count = 0
+
+// for (let i = 0; i < arr1.length; i++) {
+//     let minIndex = i; // 0, 2, 3, 4
+
+//     for (let j = i + 1; j < arr1.length; j++) {
+//         if (arr1[j] < arr1[minIndex]) {
+//             minIndex = j;
+//         }
+//         count += 1;
+//     }
+//     let tmp = arr1[i]; // 4, 3, 2, 0
+//     arr1[i] = arr1[minIndex]; // 
+//     arr1[minIndex] = tmp;
+//     // можно обемн.и так сделать:  [arr1[i], arr1[minIndex]] = [arr1[minIndex], arr1[i]];
+// }
+// console.log(arr1);
+// console.log(count);
+
+
+
+
+
+
+// // а теперь через создание нового массива
+
+// const arr1: number[] = [4, 6, 3, 2, 0, 8, 9, 1, 10, 12];
+
+// function func(array: number[]): number[] {
+//     let newArray: number[] = [];
+//     let count = 0;
+//     console.log(array);
+
+//     while (array.length > 0) { // условие выхода из цикла - отсутсвие элементов в массиве
+
+//         let minIndex = 0;
+//         for (let i = 0; i < array.length; i++) {
+//             count += 1;
+            
+//             if (array[i] < array[minIndex]) {
+//                 minIndex = i;
+//             }
+//         }
+//         newArray.push(array[minIndex])
+//         array.splice(minIndex, 1)
+
+//     }
+//     console.log(count);
+//     console.log(newArray);
+//     return newArray;
+
+// };
+
+// func(arr1);
+
+
+
+
+
+// СОРТИРОВКА ПУЗЫРЬКОМ
+
+const arr1: number[] = [4, 6, 3, 2, 0, 8, 9, 1, 10, 12];
+let count = 0
+
+function bubleSort(array:number[]) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array.length; j++) {
+            if (array[j + 1] < array[j]) {
+                let tmp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = tmp;
+            }
+            count++;
+        }
+    }
+    console.log(count);
+    console.log(array);
+    return array;
+}
+
+bubleSort(arr1)
