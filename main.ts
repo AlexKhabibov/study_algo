@@ -222,7 +222,7 @@ function selection(array: number[]): number[] {
 //         let minIndex = 0;
 //         for (let i = 0; i < array.length; i++) {
 //             count += 1;
-            
+
 //             if (array[i] < array[minIndex]) {
 //                 minIndex = i;
 //             }
@@ -242,26 +242,83 @@ function selection(array: number[]): number[] {
 
 
 
-
+/*
 // СОРТИРОВКА ПУЗЫРЬКОМ
 
 const arr1: number[] = [4, 6, 3, 2, 0, 8, 9, 1, 10, 12];
 let count = 0
 
-function bubleSort(array:number[]) {
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array.length; j++) {
-            if (array[j + 1] < array[j]) {
-                let tmp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = tmp;
+function bubleSort(array: number[]) {
+    for (let i = 0; i < array.length; i++) { // iter1: 0 | 
+        for (let j = 0; j < array.length - 1 - i; j++) { // iter1: 0 | iter2: 1 | iter3: 2 | 
+            if (array[j + 1] < array[j]) { // iter1: array[1] < array[0] = 6 < 4 NO | iter2: array[2] < array[1] = 3 < 6 YES | iter3: array[3] < array[2] = 2 < 6 YES и так далее....
+
+                // при заходе в этот блок, мы найденные элементы просто меняем местами через временную переменную
+                let tmp = array[j]; // iter1: tmp = array[1] = 6 | iter2: tmp = array[2] = 6 | 
+                array[j] = array[j + 1]; // iter1: array[j] = 3 | iter2: array[j] = 2 |
+                array[j + 1] = tmp; // iter1: array[j + 1] = 6 | iter1: array[j + 1] = 6 | 
+
+                // iter1: [4, 3, 6, 2, 0, 8, 9, 1, 10, 12]
+                // iter2: [4, 3, 2, 6, 0, 8, 9, 1, 10, 12]
+                // iter3: [4, 3, 2, 0, 6, 8, 9, 1, 10, 12]
+                // iter4: [4, 3, 2, 0, 6, 8, 1, 9, 10, 12]
+                // во внешнем цикле переходим к следующему индексу:
+                // iter5: [4, 3, 2, 0, 6, 8, 1, 9, 10, 12]
+                // iter6: [3, 4, 2, 0, 6, 8, 1, 9, 10, 12]
+                // iter7: [3, 2, 4, 0, 6, 8, 1, 9, 10, 12]
+                // iter8: [3, 2, 0, 4, 6, 8, 1, 9, 10, 12]
+                // iter9: [3, 2, 0, 4, 6, 1, 8, 9, 10, 12]
+                // во внешнем цикле переходим к следующему индексу:
+                // и так далее до прозода в конец
             }
-            count++;
+            count++; // счетчик
         }
     }
     console.log(count);
     console.log(array);
     return array;
-}
+};
 
-bubleSort(arr1)
+bubleSort(arr1);
+*/
+
+
+
+
+
+
+
+// РЕКУРСИЯ
+
+// function minus1(number: number): void {
+//     if (number <= 1) {
+//         console.log(1);
+//         return;
+//     }
+
+//     console.log(number);
+//     minus1(number - 1);
+// }
+
+// minus1(10)
+
+
+
+
+// function factorial(number:number): number {
+//     if (number === 1) {
+//         return 1;
+//     }
+
+//     return number * factorial(number -1);
+// };
+
+// console.log(factorial(50));
+
+
+
+
+
+
+// БЫСТРАЯ СОРТИРОВКА
+
