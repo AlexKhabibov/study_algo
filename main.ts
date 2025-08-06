@@ -319,6 +319,76 @@ bubleSort(arr1);
 
 
 
+// function f(n: number): void {
+//     if (n <= 0) return;
+//     f(n - 1);
+//     f(n - 2);
+// }
+
+// f(3); // вызовет себя 9 раз
+
+
+
+
+// const arr1: number[] = [1, 2, 3, 4];
+
+// function sum(arr: number[], i: number = 0): number {
+//     if (i === arr.length) return 0;
+//     return arr[i] + sum(arr, i + 1);
+// }
+
+// console.log(sum(arr1));
+
+
+
+
+
+
+
 
 // БЫСТРАЯ СОРТИРОВКА
+/**
+ * Быстрая сортировка — это рекурсивный алгоритм, который использует принцип "разделяй и властвуй":
+> 
+> 1. Выбираем **опорный элемент** (pivot).
+> 2. Делим массив на два:
+>     - элементы **меньше pivot**
+>     - элементы **больше или равны pivot**
+> 3. Рекурсивно сортируем обе части.
+ */
 
+/*
+function quickSort(array: number[]): number[] {
+    if (array.length < 2) return array; // определям базовый случай для работы с рекурсией
+
+    const pivot = array[0]; // обозначаем опорный элемент (первы в массиве), о нам нужен как границ между двумя новыми массивами (1 массив будет содержать элементы больишие чем опорныц элемент, 2 массив - меньшие)
+
+    const lessEl = array.slice(1).filter((el) => el < pivot); // создаем новый массив из элементов предидущего массива (без первого эл) и фильтруем его (все элементы должны быть меньше опорного)
+    const greaterEl = array.slice(1).filter((el) => el >= pivot); // создаем новый массив из элементов предидущего массива (без первого эл) и фильтруем его (все элементы должны быть больше или равны опорному)
+    return [...quickSort(lessEl), pivot, ...quickSort(greaterEl)] // собираем итоговый массив с помощью спреда
+
+}
+
+console.log(quickSort([5, 2, 1, 0, 5]));
+*/
+
+
+
+
+
+// через for - менее затратно для памяти (так как slice и filter очнь прожорливые из-за своей работы)
+
+function quickSortManual(arr: number[]): number[] {
+    if (arr.length < 2) return arr;
+
+    const pivot = arr[0];
+    const left: number[] = [];
+    const right: number[] = [];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) left.push(arr[i]);
+        else right.push(arr[i]);
+    }
+
+    return [...quickSortManual(left), pivot, ...quickSortManual(right)];
+}
