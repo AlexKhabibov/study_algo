@@ -358,10 +358,12 @@ bubleSort(arr1);
  */
 
 /*
+const arr1: number[] = [2, 5, 3, 78, 94, 34, 0, 1, 34]
+
 function quickSort(array: number[]): number[] {
     if (array.length < 2) return array; // определям базовый случай для работы с рекурсией
 
-    const pivot = array[0]; // обозначаем опорный элемент (первы в массиве), о нам нужен как границ между двумя новыми массивами (1 массив будет содержать элементы больишие чем опорныц элемент, 2 массив - меньшие)
+    const pivot = array[0]; // обозначаем опорный элемент (первый в массиве), о нам нужен как границ между двумя новыми массивами (1 массив будет содержать элементы больишие чем опорныц элемент, 2 массив - меньшие)
 
     const lessEl = array.slice(1).filter((el) => el < pivot); // создаем новый массив из элементов предидущего массива (без первого эл) и фильтруем его (все элементы должны быть меньше опорного)
     const greaterEl = array.slice(1).filter((el) => el >= pivot); // создаем новый массив из элементов предидущего массива (без первого эл) и фильтруем его (все элементы должны быть больше или равны опорному)
@@ -369,26 +371,60 @@ function quickSort(array: number[]): number[] {
 
 }
 
-console.log(quickSort([5, 2, 1, 0, 5]));
+console.log(quickSort(arr1));
 */
 
 
 
 
+// // через for - менее затратно для памяти (так как slice и filter очнь прожорливые из-за своей работы)
 
-// через for - менее затратно для памяти (так как slice и filter очнь прожорливые из-за своей работы)
+// const arr1: number[] = [2, 5, 3, 78, 94, 34, 0, 1, 34]
 
-function quickSortManual(arr: number[]): number[] {
-    if (arr.length < 2) return arr;
+// function quickSortManual(array: number[]): number[] {
+//     if (array.length < 2) return array;
 
-    const pivot = arr[0];
-    const left: number[] = [];
-    const right: number[] = [];
+//     const pivot = array[0];
+//     const left: number[] = [];
+//     const right: number[] = [];
+//     let count = 0;
 
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] < pivot) left.push(arr[i]);
-        else right.push(arr[i]);
-    }
+//     for (let i = 1; i < array.length; i++) {
+//         if (array[i] < pivot) left.push(array[i]);
+//         else right.push(array[i]);
+//     }
 
-    return [...quickSortManual(left), pivot, ...quickSortManual(right)];
-}
+//     return [...quickSortManual(left), pivot, ...quickSortManual(right)];
+// }
+
+// console.log(quickSortManual(arr1));
+
+
+
+
+
+
+// const arr1: number[] = [2, 5, 3, 78, 94, 34, 0, 1, 34]
+
+// function quickSort1(array: number[]): number[] {
+//     if (array.length <= 1) return array;
+
+//     let pivotIndex = Math.floor(array.length / 2);
+//     let pivot = array[pivotIndex];
+//     let lessThanPivotArray = [];
+//     let greaterThanPivotArray = [];
+
+//     for (let i = 0; i < array.length; i++) {
+//         if (i === pivotIndex) continue; // убираем наш опорный элемент из прохода, чтобы не дублировать
+
+//         if (array[i] < pivot) {
+//             lessThanPivotArray.push(array[i])
+//         } else {
+//             greaterThanPivotArray.push(array[i])
+//         }
+//     }
+
+//     return [...quickSort1(lessThanPivotArray), pivot, ...quickSort1(greaterThanPivotArray)]
+// };
+
+// console.log(quickSort1(arr1));
