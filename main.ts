@@ -428,3 +428,240 @@ console.log(quickSort(arr1));
 // };
 
 // console.log(quickSort1(arr1));
+
+
+
+
+
+
+
+
+
+// GRAPH
+
+
+/*
+// Тип для вершины
+type Vertex = string;
+
+// Тип для графа: ключ — вершина, значение — массив соседей
+type Graph = Map<Vertex, Vertex[]>;
+
+const graph: Graph = new Map();
+
+// Функция для добавления вершины
+function addVertex(vertex: Vertex): void {
+    if (!graph.has(vertex)) {
+        graph.set(vertex, []);
+    }
+}
+
+// Функция для добавления ребра (двустороннего)
+function addEdge(v1: Vertex, v2: Vertex): void {
+    graph.get(v1)?.push(v2);
+    graph.get(v2)?.push(v1);
+}
+
+// Добавляем вершины
+addVertex("A");
+addVertex("B");
+addVertex("C");
+addVertex("D");
+
+// Добавляем рёбра
+addEdge("A", "B");
+addEdge("A", "C");
+addEdge("B", "D");
+addEdge("C", "D");
+
+// Выводим граф
+console.log(graph);
+*/
+
+
+
+
+
+// Найдем кратчайшее расстояние из точки A в точку G
+
+/*
+// создадим тип для работы с графами
+type Graph = {
+    [key: string]: string[];
+}
+
+const graph: Graph = {}; // создадим объект graph
+
+// поля в объекте будут вершинами, а массив кажой вершины будет напрвлнием - ребром
+graph.a = ['b', 'c'];
+graph.b = ['f'];
+graph.c = ['d', 'e'];
+graph.d = ['f'];
+graph.e = ['f'];
+graph.f = ['g'];
+
+// Функция поиска в ширину
+function breadthSearch(graph: Graph, start: string, end: string): boolean {
+    let queue: string[] = []; // Явно указываем тип queue как string[]
+    queue.push(start);
+
+    while (queue.length > 0) {
+        const currentEl: string = queue.shift()!; // Используем non-null assertion, так как очередь не пуста
+
+        if (!graph[currentEl]) graph[currentEl] = [];
+        if (graph[currentEl].includes(end)) return true;
+        else queue = [...queue, ...graph[currentEl]];
+    }
+
+    return false;
+}
+
+console.log(breadthSearch(graph, 'a', 'g'));
+*/
+
+
+
+
+
+/*
+// выведем все узлы дерева
+// создаем тип для узла
+type TreeNode = {
+    value: string;
+    children: TreeNode[];
+};
+
+
+// создаем дерево через объект
+const tree: TreeNode = {
+    value: 'A',
+    children: [{ value: 'B', children: [] }, { value: 'C', children: [] }]
+};
+
+// создаем функцию для вывода узлов дерева
+function printTree(node: TreeNode): void {
+    console.log(node.value);
+    for (let child of node.children) { // пробегаемся с помощью for..of
+        printTree(child);
+    }
+}
+
+printTree(tree); // A B C
+*/
+
+
+
+
+
+/**
+ * "Посчитать количество узлов в дереве"
+ */
+
+/*
+type TreeNode = {
+    value: string;
+    children: TreeNode[];
+};
+
+
+const tree = {
+    value: 'A',
+    children: [
+        { value: 'B', children: [] },
+        { value: 'C', children: [] }
+    ]
+};
+
+
+function countNodes(node: TreeNode): number {
+  let count = 1; // считаем текущий узел
+  for (const child of node.children) {
+    count += countNodes(child); // прибавляем количество узлов в поддеревьях
+  }
+  return count;
+}
+
+console.log(countNodes(tree)); // 3
+*/
+
+
+
+
+
+
+
+/**
+ * Алгоритм Дейктры
+ */
+
+/*
+type Graph = {
+    [node: string]: {
+        [neighbor: string]: number;
+    }
+};
+
+const graph: Graph = {};
+
+graph.a = { b: 2, c: 1 };
+graph.b = { f: 7 };
+graph.c = { d: 5, e: 2 };
+graph.d = { f: 2 };
+graph.e = { f: 1 };
+graph.f = { g: 1 };
+graph.g = {}; // пустой объект для вершины без исходящих ребер
+
+// Функция для поиска кратчайших путей
+function shortPath(graph: Graph, start: string, end: string): Record<string, number> {
+    // стоимость пути от start до каждой вершины
+    const costs: Record<string, number> = {};
+
+    // уже обработанные вершины
+    const processed: string[] = [];
+
+    // заполняем начальные стоимости
+    Object.keys(graph).forEach(node => {
+        if (node !== start) {
+            const value = graph[start]?.[node];
+            costs[node] = value !== undefined ? value : Infinity;
+        }
+    });
+
+    let node = findNodeLowestCost(costs, processed);
+    while (node) {
+        const cost = costs[node];
+        const neighbors = graph[node];
+
+        Object.keys(neighbors).forEach(neighbor => {
+            const newCost = cost + neighbors[neighbor];
+            if (newCost < (costs[neighbor] ?? Infinity)) {
+                costs[neighbor] = newCost;
+            }
+        });
+
+        processed.push(node);
+        node = findNodeLowestCost(costs, processed);
+    }
+
+    return costs;
+}
+
+// Функция для поиска необработанной вершины с минимальной стоимостью
+function findNodeLowestCost(costs: Record<string, number>, processed: string[]): string | undefined {
+    let lowestCost = Infinity;
+    let lowestNode: string | undefined = undefined;
+
+    Object.keys(costs).forEach(node => {
+        const cost = costs[node];
+        if (cost < lowestCost && !processed.includes(node)) {
+            lowestCost = cost;
+            lowestNode = node;
+        }
+    });
+
+    return lowestNode;
+}
+
+// Пример использования
+console.log(shortPath(graph, 'a', 'g'));
+*/
