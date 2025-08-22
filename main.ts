@@ -646,6 +646,10 @@ function shortPath(graph: Graph, start: string, end: string): Record<string, num
     return costs;
 }
 
+
+
+
+
 // Функция для поиска необработанной вершины с минимальной стоимостью
 function findNodeLowestCost(costs: Record<string, number>, processed: string[]): string | undefined {
     let lowestCost = Infinity;
@@ -665,3 +669,63 @@ function findNodeLowestCost(costs: Record<string, number>, processed: string[]):
 // Пример использования
 console.log(shortPath(graph, 'a', 'g'));
 */
+
+
+
+
+
+
+/*
+// Дан массив чисел nums и число target. Нужно найти индексы двух чисел, сумма которых равна target.
+// Можно предположить, что решение всегда существует, и одно число нельзя использовать дважды.
+
+function findTarget(array: number[], target: number): number[] {
+    let newArr: number[] = []; // сюда будем пушить новый массив индексов
+
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (target === array[i] + array[j]) {
+                newArr = [i, j];
+                return newArr;
+            }
+        }
+    }
+    throw new Error("пары не найдены");
+    
+};
+
+console.log(findTarget([2, 7, 11, 15], 9));
+*/
+
+
+
+
+
+
+
+/**
+ * Дан массив чисел nums. Нужно найти максимальное число в массиве и его индекс.
+ * function findMax(array: number[]): { max: number; index: number } {
+    if (array.length === 0) {
+        throw new Error("Массив пустой");
+    }
+
+    let maxNum = array[0];
+    let maxIndex = 0;
+
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] > maxNum) {
+            maxNum = array[i];
+            maxIndex = i;
+        }
+    }
+
+    return { max: maxNum, index: maxIndex };
+}
+
+console.log(findMax([3, 7, 2, 9, 4]));
+ * 
+ */
+
+
+
