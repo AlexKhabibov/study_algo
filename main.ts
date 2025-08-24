@@ -729,3 +729,143 @@ console.log(findMax([3, 7, 2, 9, 4]));
 
 
 
+/**
+ * Дан массив чисел `nums`. Нужно найти:
+
+1. **Минимальное число** и его индекс.
+2. **Максимальное число** и его индекс.
+3. **Сумму всех элементов массива**.
+
+type ReturnObj = {
+    max: number;
+    maxIndex: number;
+    min: number;
+    minIndex: number;
+    sum: number
+}
+
+function findMaxMinSum(array: number[]): ReturnObj {
+    if (array.length === 0) {
+        throw new Error("Массив пустой");
+    }
+
+    let maxNum = array[0];
+    let maxIndex = 0;
+    let minNum = array[0];
+    let minIndex = 0;
+    let sum = 0;
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] > maxNum) {
+            maxNum = array[i];
+            maxIndex = i;
+        }
+        if (array[i] < minNum) {
+            minNum = array[i];
+            minIndex = i;
+        }
+
+        sum += array[i];
+    }
+
+    return { max: maxNum, maxIndex: maxIndex, min: minNum, minIndex: minIndex, sum: sum };
+}
+
+console.log(findMaxMinSum([3, 7, 2, 9, 4]));
+ */
+
+
+
+
+/**
+ * Дан массив чисел.
+Нужно:
+Найти сумму всех элементов.
+Посчитать среднее арифметическое.
+Посчитать, сколько чисел строго больше среднего.
+
+function func(array: number[]): { sum: number; average: number; greaterThanAverageCount: number } {
+    let sum = 0;
+    let average = 0;
+    let greaterThanAverageCount = 0;
+    let newArr: number[] = [];
+
+    if (array.length < 1) {
+        throw new Error("Массив пуст");
+    }
+
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i];
+    };
+    
+    average = sum / array.length;
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] > average) {
+            newArr.push(array[i])
+            greaterThanAverageCount = newArr.length;
+            
+            // но можно и без массива, то будет производительнее
+            // greaterThanAverageCount ++;
+        }
+    }
+
+    return { sum, average, greaterThanAverageCount };
+}
+
+console.log(func([10, 20, 30, 40, 50]));
+ * 
+ */
+
+
+/**
+ * Напиши функцию countUnique, которая принимает массив чисел и возвращает количество уникальных элементов в нём.
+ * 
+
+function countUnique(array: number[]): number {
+    return new Set(array).size;;
+};
+
+console.log(countUnique([1, 2, 2, 3, 4, 4, 5]));
+
+
+
+
+function countUnique(array: number[]): number {
+    if (array.length === 0) throw new Error("Ошибка массива");
+    
+    let count = 1;
+    
+    for (let i = 1; i < array.length; i++) {
+
+        if (array[i] !== array[i - 1]) {
+            count++;
+        }
+
+    }
+    return count;
+};
+
+console.log(countUnique([1, 2, 2, 3, 4, 4, 5]));
+
+
+
+
+function countUnique(array: number[]): number {
+    const counter: Record<number, number> = {};
+
+    for (let i = 0; i < array.length; i++) {
+        const el = array[i]; // 1iter: 1 | 2iter: 
+        counter[el] = (counter[el] || 0) + 1; // 1iter: {1: }
+        console.log(counter);
+    }
+
+    return Object.keys(counter).length;
+}
+
+console.log(countUnique([1, 2, 2, 3, 4, 4, 5]));
+ */
+
+
+
+
