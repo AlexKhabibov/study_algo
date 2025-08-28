@@ -92,8 +92,8 @@ function binarySearch(array: number[], target: number): number | never {
             return middle; // middle === 23
         }
 
-        if (target < arr[middle]) { // iter1: 23 < 7 NO | 2iter: 23 < 12 NO | 
-            end = middle - 1; 
+        if (target < arr[middle]) { // iter1: 23 < 7 NO | 2iter: 23 < 12 NO |
+            end = middle - 1;
         } else {
             start = middle + 1; // 1iter: start = 4 + 1 = 5 | 2iter: start = 7 + 1 = 8
         }
@@ -121,7 +121,7 @@ function selection(array: number[]): number[] {
     for (let i = 0; i < array.length; i++) {
         let indexMin = i;
         for (let j = i + 1; j < array.length; j++) {
-            if (array[j] < array[indexMin]) { 
+            if (array[j] < array[indexMin]) {
                 indexMin = j;
             }
             count += 1;
@@ -249,14 +249,14 @@ const arr1: number[] = [4, 6, 3, 2, 0, 8, 9, 1, 10, 12];
 let count = 0
 
 function bubleSort(array: number[]) {
-    for (let i = 0; i < array.length; i++) { // iter1: 0 | 
-        for (let j = 0; j < array.length - 1 - i; j++) { // iter1: 0 | iter2: 1 | iter3: 2 | 
+    for (let i = 0; i < array.length; i++) { // iter1: 0 |
+        for (let j = 0; j < array.length - 1 - i; j++) { // iter1: 0 | iter2: 1 | iter3: 2 |
             if (array[j + 1] < array[j]) { // iter1: array[1] < array[0] = 6 < 4 NO | iter2: array[2] < array[1] = 3 < 6 YES | iter3: array[3] < array[2] = 2 < 6 YES и так далее....
 
                 // при заходе в этот блок, мы найденные элементы просто меняем местами через временную переменную
-                let tmp = array[j]; // iter1: tmp = array[1] = 6 | iter2: tmp = array[2] = 6 | 
+                let tmp = array[j]; // iter1: tmp = array[1] = 6 | iter2: tmp = array[2] = 6 |
                 array[j] = array[j + 1]; // iter1: array[j] = 3 | iter2: array[j] = 2 |
-                array[j + 1] = tmp; // iter1: array[j + 1] = 6 | iter1: array[j + 1] = 6 | 
+                array[j + 1] = tmp; // iter1: array[j + 1] = 6 | iter1: array[j + 1] = 6 |
 
                 // iter1: [4, 3, 6, 2, 0, 8, 9, 1, 10, 12]
                 // iter2: [4, 3, 2, 6, 0, 8, 9, 1, 10, 12]
@@ -349,7 +349,7 @@ bubleSort(arr1);
 // БЫСТРАЯ СОРТИРОВКА
 /**
  * Быстрая сортировка — это рекурсивный алгоритм, который использует принцип "разделяй и властвуй":
-> 
+>
 > 1. Выбираем **опорный элемент** (pivot).
 > 2. Делим массив на два:
 >     - элементы **меньше pivot**
@@ -868,4 +868,58 @@ console.log(countUnique([1, 2, 2, 3, 4, 4, 5]));
 
 
 
+
+
+/**
+ * Подсчёт количества чётных и нечётных чисел в массиве
+ * {
+  even: number; // количество чётных
+  odd: number;  // количество нечётных
+}
+ * 
+ * countEvenOdd([1, 2, 3, 4, 5]);
+// { even: 2, odd: 3 }
+
+
+function countEvenOdd(array: number[]): { even: number, odd: number } {
+    let evenArr: number[] = [];
+    let oddArr: number[] = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 0) evenArr.push(array[i])
+        else oddArr.push(array[i])
+    }
+
+    let result = { even: evenArr.length, odd: oddArr.length };
+    return result;
+};
+
+console.log(countEvenOdd([1, 2, 3, 4, 5]));
+
+ * 
+ */
+
+
+
+
+
+/**
+ * const vowels = ['a','e','i','o','u'];
+ * countVowels("hello world") результат: 3 (e, o, o)
+ * 
+ * function countVowels(array: string): number {
+    let count: number = 0;
+    const vowels: string[] = ['a', 'e', 'i', 'o', 'u'];
+
+    for (let i = 0; i < array.length; i++) {
+        if (vowels.includes(array[i].toLocaleLowerCase())) {
+            count++;
+        }
+    }
+
+    return count;
+};
+
+console.log(countVowels("HEllo World"));
+ */
 
