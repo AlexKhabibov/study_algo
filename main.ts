@@ -923,3 +923,56 @@ console.log(countEvenOdd([1, 2, 3, 4, 5]));
 console.log(countVowels("HEllo World"));
  */
 
+
+
+
+
+/** Задача 9 (объекты / Map)
+Напиши функцию countWords, которая принимает строку и возвращает объект, где:
+- ключи → уникальные слова в строке
+- значения → количество вхождений каждого слова
+
+countWords("hello world hello world world")
+// результат: { hello: 2, world: 3 }
+
+
+
+type returnObj = {
+    [uniqueWords: string]: number;
+}
+
+function countWords(text: string): returnObj {
+    let result: returnObj = {};
+    let splitText = text.toLowerCase().split(' ').filter(word => word !== '');
+
+    if (typeof text !== 'string') {
+        throw new Error('Аргумент должен быть строкой');
+    }
+
+    for (let i = 0; i < splitText.length; i++) {
+        const word = splitText[i];
+
+        if (!result[word]) {
+            result[word] = 1; // если отсутсвтует такой ключ — назначаем его и присваиваем кол-во 1
+        } else {
+            result[word] += 1; // если слово(такой ключ) уже есть, увеличиваем счётчик 
+        }
+    }
+
+    return result;
+}
+
+
+console.log(countWords("Hello world hello World hello world world"));
+ */
+
+
+
+
+
+/** Задача 7 — Подсчёт повторяющихся чисел в массиве
+ * 
+ */
+
+
+
