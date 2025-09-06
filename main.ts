@@ -691,7 +691,7 @@ function findTarget(array: number[], target: number): number[] {
         }
     }
     throw new Error("пары не найдены");
-    
+
 };
 
 console.log(findTarget([2, 7, 11, 15], 9));
@@ -724,7 +724,7 @@ console.log(findTarget([2, 7, 11, 15], 9));
 }
 
 console.log(findMax([3, 7, 2, 9, 4]));
- * 
+ *
  */
 
 
@@ -797,14 +797,14 @@ function func(array: number[]): { sum: number; average: number; greaterThanAvera
     for (let i = 0; i < array.length; i++) {
         sum += array[i];
     };
-    
+
     average = sum / array.length;
 
     for (let i = 0; i < array.length; i++) {
         if (array[i] > average) {
             newArr.push(array[i])
             greaterThanAverageCount = newArr.length;
-            
+
             // но можно и без массива, то будет производительнее
             // greaterThanAverageCount ++;
         }
@@ -814,13 +814,13 @@ function func(array: number[]): { sum: number; average: number; greaterThanAvera
 }
 
 console.log(func([10, 20, 30, 40, 50]));
- * 
+ *
  */
 
 
 /**
  * Напиши функцию countUnique, которая принимает массив чисел и возвращает количество уникальных элементов в нём.
- * 
+ *
 
 function countUnique(array: number[]): number {
     return new Set(array).size;;
@@ -833,9 +833,9 @@ console.log(countUnique([1, 2, 2, 3, 4, 4, 5]));
 
 function countUnique(array: number[]): number {
     if (array.length === 0) throw new Error("Ошибка массива");
-    
+
     let count = 1;
-    
+
     for (let i = 1; i < array.length; i++) {
 
         if (array[i] !== array[i - 1]) {
@@ -855,7 +855,7 @@ function countUnique(array: number[]): number {
     const counter: Record<number, number> = {};
 
     for (let i = 0; i < array.length; i++) {
-        const el = array[i]; // 1iter: 1 | 2iter: 
+        const el = array[i]; // 1iter: 1 | 2iter:
         counter[el] = (counter[el] || 0) + 1; // 1iter: {1: }
         console.log(counter);
     }
@@ -876,7 +876,7 @@ console.log(countUnique([1, 2, 2, 3, 4, 4, 5]));
   even: number; // количество чётных
   odd: number;  // количество нечётных
 }
- * 
+ *
  * countEvenOdd([1, 2, 3, 4, 5]);
 // { even: 2, odd: 3 }
 
@@ -896,7 +896,7 @@ function countEvenOdd(array: number[]): { even: number, odd: number } {
 
 console.log(countEvenOdd([1, 2, 3, 4, 5]));
 
- * 
+ *
  */
 
 
@@ -906,7 +906,7 @@ console.log(countEvenOdd([1, 2, 3, 4, 5]));
 /**
  * const vowels = ['a','e','i','o','u'];
  * countVowels("hello world") результат: 3 (e, o, o)
- * 
+ *
  * function countVowels(array: string): number {
     let count: number = 0;
     const vowels: string[] = ['a', 'e', 'i', 'o', 'u'];
@@ -955,7 +955,7 @@ function countWords(text: string): returnObj {
         if (!result[word]) {
             result[word] = 1; // если отсутсвтует такой ключ — назначаем его и присваиваем кол-во 1
         } else {
-            result[word] += 1; // если слово(такой ключ) уже есть, увеличиваем счётчик 
+            result[word] += 1; // если слово(такой ключ) уже есть, увеличиваем счётчик
         }
     }
 
@@ -970,9 +970,178 @@ console.log(countWords("Hello world hello World hello world world"));
 
 
 
-/** Задача 7 — Подсчёт повторяющихся чисел в массиве
+
+
+
+
+
+
+
+// function reverseText(text: string): string {
+
+//     if (!text) throw new Error("string is empty");
+
+//     let result = '';
+
+//     for (let i = text.length - 1; i >= 0; i--) {
+//         result += text[i];
+//     }
+//     return result;
+// };
+
+// console.log(reverseText(''));
+
+
+
+
+
+
+// async function reverseTextAsync(text: string): Promise<string> {
+//     if (!text) throw new Error("string is empty");
+
+//     let result = '';
+//     for (let i = text.length - 1; i >= 0; i--) {
+//         result += text[i];
+//     }
+//     return result;
+// }
+
+// // Используем async/await
+// (async () => {
+//     try {
+//         const reversed = await reverseTextAsync("hello");
+//         console.log(reversed); // "olleh"
+//     } catch (err) {
+//         console.error(err);
+//     }
+// })();
+
+
+
+
+
+// группировка
+// const weatherData = [
+//     { date: '2010-03-23', maxTemp: 15, minTemp: 8, description: 'холодно' },
+//     { date: '2010-04-28', maxTemp: 14, minTemp: 5, description: 'тепло' },
+//     { date: '2010-05-20', maxTemp: 12, minTemp: 3, description: 'солнечно' },
+//     { date: '2010-04-21', maxTemp: 10, minTemp: 5, description: 'туман' },
+// ];
+
+// const groupByDescription = weatherData.reduce((acc, item) => {
+//     const key = item.description;
+
+//     if (!acc[key]) {
+//         acc[key] = [];
+//     };
+
+//     acc[key].push(item);
+//     return acc;
+// }, {});
+
+// console.log(groupByDescription);
+
+
+
+
+
+
+/** Задача - Подсчёт повторяющихся чисел в массиве
+ * [1, 2, 2, 3, 4, 4, 4, 5].
  * 
+ * Пример ожидаемого результата:
+{ 1: 1, 2: 2, 3: 1, 4: 3, 5: 1 }
+
+type ResultType = {
+    [num: number]: number;
+};
+
+function func(array: number[]): ResultType {
+
+    if (!array) {
+        throw new Error("массив пустой");
+    }
+
+    let result: ResultType = {};
+
+    for (let i = 0; i < array.length; i++) {
+        const num = array[i];
+
+        if (!result[num]) {
+            result[num] = 1; // если отсутсвтует такой ключ — назначаем его и присваиваем кол-во 1
+        } else {
+            result[num] += 1; // если слово(такой ключ) уже есть, увеличиваем счётчик 
+        }
+    }
+
+    return result;
+};
+
+console.log(func( [1, 2, 2, 3, 4, 4, 4, 5]));
  */
+
+
+
+
+
+/** Задача №7: Сдвиг элементов массива
+Условие:
+Напиши функцию, которая получает массив чисел и возвращает новый массив, где каждый элемент сдвинут на 1 вправо.
+Последний элемент массива становится первым.
+Пример:
+shiftArray([1, 2, 3, 4]);
+Результат: [4, 1, 2, 3] 
+
+function shiftArray(array: number[]): number[] {
+    let result: number[] = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (i === array.length - 1) {
+            result[0] = array[i]; // последний элемент на первую позицию
+        } else {
+            result[i + 1] = array[i]; // остальные сдвигаем на +1
+        }
+    }
+    return result;
+}
+
+console.log(shiftArray([1, 2, 3, 4]));
+ */
+
+
+
+/** ## Задача №8: **Найти все пары чисел с суммой `target`**
+
+**Условие:**
+Напиши функцию, которая получает массив чисел и число `target`.
+Нужно вернуть **все уникальные пары чисел**, сумма которых равна `target`.
+
+**Пример:**
+
+findPairs([2, 4, 3, 5, 7], 7);
+Результат: [[2,5], [4,3]]
+
+
+function findPairs(array: number[], target: number): number[][] {
+    if (array.length < 2) {
+        throw new Error("массив должен быть более 1 элемента");
+    }
+    let resArray: number[][] = [];
+
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[i] + array[j] === target) {
+                resArray.push([array[i], array[j]]);
+            }
+        }
+    }
+    return resArray;
+}
+
+console.log(findPairs([2, 4, 3, 5, 7], 7));
+ */
+
+
 
 
 
