@@ -1145,3 +1145,88 @@ console.log(findPairs([2, 4, 3, 5, 7], 7));
 
 
 
+
+/** Проверка палиндрома
+ * 
+ * function isPalindrome(text: string): boolean {
+    if (!text) throw new Error("должен быть текст");
+
+    let cleanText = text.toLowerCase().replace(/[^a-z0-9]/g, "");
+    let newText = '';
+
+    for (let i = cleanText.length - 1; i >= 0; i--) {
+        newText += cleanText[i];
+    };
+
+    return cleanText === newText
+};
+
+console.log(isPalindrome("A man a plan a canal Panama"));
+ * 
+ */
+
+
+
+/** ## **Задача:** Дана строка. Нужно найти **первый неповторяющийся символ** (который встречается ровно один раз). Если такого символа нет — вернуть `null`.
+
+Пример:
+
+```tsx
+"swiss" → "w"
+"level" → "v"
+"aabbcc" → null
+```
+
+function findChar(text: string) {
+
+    for (let i = 0; i < text.length; i++) {
+        let uniqueChar = true;
+
+        for (let j = 0; j < text.length; j++) {
+            if (i !== j && text[i] === text[j]) {
+                uniqueChar = false;
+                break; // символ повторяется → выходим из внутреннего цикла
+            }
+        }
+
+        if (uniqueChar) {
+            return text[i];
+        }
+    }
+    return null;
+}
+
+console.log(findChar('swwwiss'));
+
+ * 
+ */
+
+
+
+
+
+/** Задача №11 — Проверка анаграммы
+
+function isAnagram(word1: string, word2: string): boolean {
+    if (!word1 || !word2) {
+        throw new Error("введите текст");
+    }
+
+    let cleanWord1 = word1.trim().toLowerCase().replace(/\s/g, "");
+    let cleanWord2 = word2.trim().toLowerCase().replace(/\s/g, "");
+
+    if (cleanWord1.length !== cleanWord2.length) return false;
+
+    let word1Arr = cleanWord1.split('');
+    let word2Arr = cleanWord2.split('');
+
+    return word1Arr.sort().join('') === word2Arr.sort().join('');
+}
+
+console.log(isAnagram(" lis   ten ", "sil   e  n  t ")); // true
+console.log(isAnagram("hello", "bello")); // false
+ */
+
+
+
+
